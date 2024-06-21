@@ -4,7 +4,7 @@ pipeline {
         GIT_URL = 'https://github.com/rmaheto/logging-demo.git'
         BRANCH = 'main' // Change to your desired branch
         BUILD_DIR = 'target' // Directory where the built files are located
-        ARTIFACT_NAME = 'your-application.jar' // Change to your WAR or JAR file name
+        ARTIFACT_NAME = 'logging-demo.war' // Change to your WAR or JAR file name
         PUBLISH_DIR = '/path/to/publish/location' // Local or remote directory
     }
     stages {
