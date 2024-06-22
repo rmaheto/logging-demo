@@ -20,6 +20,7 @@ pipeline {
                             mkdir -p ~/.ssh
                             echo "Host ${REMOTE_HOST}" > ~/.ssh/config
                             echo "  StrictHostKeyChecking no" >> ~/.ssh/config
+                            ssh -i $SSH_KEY ${REMOTE_USER}@${REMOTE_HOST} "pkill -f 'java -jar' || true"
                             ssh -i $SSH_KEY ${REMOTE_USER}@${REMOTE_HOST} 'rm -rf ${DEPLOY_DIR}/*'
                             scp -i $SSH_KEY ${BUILD_ARTIFACT_PATH}/${ARTIFACT_NAME} ${REMOTE_USER}@${REMOTE_HOST}:${DEPLOY_DIR}/
                         '''
@@ -32,7 +33,7 @@ pipeline {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: REMOTE_CREDENTIAL_ID, keyFileVariable: 'SSH_KEY')]) {
                         sh '''
-                            ssh -i $SSH_KEY ${REMOTE_USER}@${REMOTE_HOST} "pkill -f 'java -jar' || true"
+                            
                             ssh -i $SSH_KEY ${REMOTE_USER}@${REMOTE_HOST} "nohup java -jar ${DEPLOY_DIR}/${ARTIFACT_NAME} > /dev/null 2>&1 &"
                         '''
                     }
