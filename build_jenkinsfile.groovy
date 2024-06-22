@@ -4,7 +4,7 @@ pipeline {
         GIT_URL = 'https://github.com/rmaheto/logging-demo.git'
         BRANCH = 'main' // Change to your desired branch
         BUILD_DIR = 'target' // Directory where the built files are located
-        ARTIFACT_NAME = 'logging-demo.war'
+        ARTIFACT_NAME = 'logging-demo-0.0.1-SNAPSHOT.war'
         CREDENTIAL_ID = '61f8848c-29c3-448f-9e37-1f87a4512fd5'
         REMOTE_CREDENTIAL_ID = 'remote-server-ssh' // SSH credentials ID
         REMOTE_USER = 'ec2-user'
