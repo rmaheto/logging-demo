@@ -11,16 +11,24 @@ pipeline {
         REMOTE_HOST = '52.23.198.34'
         PUBLISH_DIR = '/home/ec2-user/artifacts'
     }
+    parameters {
+        string(name: 'BRANCH', defaultValue: 'main', description: 'Select the branch to build')
+    }
     stages {
         stage('Checkout') {
             steps {
-                git branch: "${BRANCH}", url: "${GIT_URL}", credentialsId: CREDENTIAL_ID
+                git branch: "${params.BRANCH}", url: "${GIT_URL}", credentialsId: CREDENTIAL_ID
             }
         }
         stage('Build') {
             steps {
                 // Example for a Maven build
                 sh 'mvn clean install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
             }
         }
         stage('Publish') {
