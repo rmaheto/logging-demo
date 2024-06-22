@@ -9,7 +9,7 @@ pipeline {
         REMOTE_CREDENTIAL_ID = 'remote-server-ssh' // SSH credentials ID
         REMOTE_USER = 'ec2-user'
         REMOTE_HOST = '52.23.198.34'
-        PUBLISH_DIR = '/home/ec2-user/artifacts'
+        PUBLISH_DIR = '/home/ec2-user/artifacts/builds'
     }
     parameters {
         string(name: 'BRANCH', defaultValue: 'main', description: 'Select the branch to build')
