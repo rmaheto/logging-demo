@@ -26,11 +26,14 @@ pipeline {
         stage('Publish') {
             steps {
                 script {
-                    // Use SSH credentials for secure copy
                     withCredentials([sshUserPrivateKey(credentialsId: REMOTE_CREDENTIAL_ID, keyFileVariable: 'SSH_KEY')]) {
-                        sh """
+                        // Manually disable host key checking for the scp command
+                        sh '''
+                            mkdir -p ~/.ssh
+                            echo "Host ${REMOTE_HOST}" > ~/.ssh/config
+                            echo "  StrictHostKeyChecking no" >> ~/.ssh/config
                             scp -i $SSH_KEY ${BUILD_DIR}/${ARTIFACT_NAME} ${REMOTE_USER}@${REMOTE_HOST}:${PUBLISH_DIR}/
-                        """
+                        '''
                     }
                 }
             }
