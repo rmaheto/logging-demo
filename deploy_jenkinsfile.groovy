@@ -44,7 +44,7 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: REMOTE_CREDENTIAL_ID, keyFileVariable: 'SSH_KEY')]) {
                         sh '''
                             sleep 30
-                            curl -f http://${REMOTE_HOST}:8084/actuator/health || (echo 'Application not running!' && exit 1)
+                            curl -f http://${REMOTE_HOST}:8084/logging-demo/actuator/health || (echo 'Application not running!' && exit 1)
                         '''
                     }
                 }
