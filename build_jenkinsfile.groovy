@@ -11,9 +11,6 @@ pipeline {
         REMOTE_HOST = '3.84.1.230'
         PUBLISH_DIR = '/home/ec2-user/artifacts/builds'
     }
-    parameters {
-        string(name: 'BRANCH', defaultValue: 'main', description: 'Select the branch to build')
-    }
     stages {
         stage('Checkout') {
             steps {
