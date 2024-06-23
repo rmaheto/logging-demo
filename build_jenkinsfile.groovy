@@ -8,7 +8,7 @@ pipeline {
         CREDENTIAL_ID = '61f8848c-29c3-448f-9e37-1f87a4512fd5'
         REMOTE_CREDENTIAL_ID = 'remote-server-ssh' // SSH credentials ID
         REMOTE_USER = 'ec2-user'
-        REMOTE_HOST = '3.84.1.230'
+        REMOTE_HOST = '3.87.243.80'
         PUBLISH_DIR = '/home/ec2-user/artifacts/builds'
     }
     stages {

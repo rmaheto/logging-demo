@@ -7,7 +7,7 @@ pipeline {
         BUILD_ARTIFACT_PATH = '/home/ec2-user/artifacts/builds'
         DEPLOY_DIR = '/home/ec2-user/artifacts/deploys'
         REMOTE_USER = 'ec2-user'
-        REMOTE_HOST = '52.23.198.34'
+        REMOTE_HOST = '3.87.243.80'
         REMOTE_CREDENTIAL_ID = 'remote-server-ssh'
         ARTIFACT_NAME = "logging-demo-${params.VERSION}.war"
     }
