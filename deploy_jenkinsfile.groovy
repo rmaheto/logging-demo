@@ -20,8 +20,8 @@ pipeline {
                             mkdir -p ~/.ssh
                             echo "Host ${REMOTE_HOST}" > ~/.ssh/config
                             echo "  StrictHostKeyChecking no" >> ~/.ssh/config
-                            ssh -v -i $SSH_KEY ${REMOTE_USER}@${REMOTE_HOST} 'rm ${DEPLOY_DIR}/*.war'
-                            ssh -v -i $SSH_KEY ${REMOTE_USER}@${REMOTE_HOST} "cp ${BUILD_ARTIFACT_PATH}/${ARTIFACT_NAME} ${DEPLOY_DIR}"
+                            ssh -v -i $SSH_KEY ${REMOTE_USER}@${REMOTE_HOST} rm ${DEPLOY_DIR}/*.war
+                            ssh -v -i $SSH_KEY ${REMOTE_USER}@${REMOTE_HOST} cp ${BUILD_ARTIFACT_PATH}/${ARTIFACT_NAME} ${DEPLOY_DIR}
                         '''
                     }
                 }
